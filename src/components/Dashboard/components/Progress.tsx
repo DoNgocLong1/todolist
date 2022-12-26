@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import { MinusOutlined, PlusOutlined } from '@ant-design/icons';
 import { Button, Progress } from 'antd';
 interface ITaskProgress{
-    taskPercent: number
+    taskPercent: any
 }
 const TaskProgress = ({taskPercent}: ITaskProgress) => {
   const [percent, setPercent] = useState<number>(taskPercent);
 
   const increase = () => {
     setPercent((prevPercent) => {
-      const newPercent = prevPercent + 5;
+      const newPercent =  prevPercent + 1;
       if (newPercent > 100) {
         return 100;
       }
@@ -19,7 +19,7 @@ const TaskProgress = ({taskPercent}: ITaskProgress) => {
 
   const decline = () => {
     setPercent((prevPercent) => {
-      const newPercent = prevPercent - 5;
+      const newPercent = prevPercent - 1;
       if (newPercent < 0) {
         return 0;
       }

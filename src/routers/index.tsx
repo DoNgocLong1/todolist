@@ -17,27 +17,31 @@ const Routers = () => {
         return !state.isAuthenticated ? <Outlet /> : <Navigate to = '/task' />;
     }
     const elements = useRoutes([
-        {
-          path: "",
-          element: <ProtectedRoute />,
-          children: [
-            {
-              path: '/task',
-              element: <Task />,
-            },
-          ],
-        },
-        {
-          path: "",
-          element: <RejectedRoute />,
-          children: [
-            {
-              path: '/login',
-              element: <Login />,
-            },
-          ],
-        },
-      ]);
+      {
+        path: "/",
+        element: <Login />,
+      },
+      {
+        path: "",
+        element: <ProtectedRoute />,
+        children: [
+          {
+            path: '/task',
+            element: <Task />,
+          },
+        ],
+      },
+      {
+        path: "",
+        element: <RejectedRoute />,
+        children: [
+          {
+            path: '/login',
+            element: <Login />,
+          },
+        ],
+      },
+    ]);
     
       return elements;
 }

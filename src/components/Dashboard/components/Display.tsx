@@ -6,7 +6,7 @@ interface IDisplay {
   tab2?: React.ReactNode;
   tab3?: React.ReactNode;
 }
-const Display = ({ children, tab1, tab2, tab3 }: IDisplay) => (
+const Display = ({ children, tab1 = [], tab2, tab3 }: IDisplay) => (
   <Tabs
     defaultActiveKey="1"
     items={[
