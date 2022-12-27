@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Space, Table, Tag } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import TaskProgress from './Progress';
@@ -28,7 +28,7 @@ const columns: ColumnsType<DataType> = [
     dataIndex: 'status',
     render: (_, { tags }) => (
       <>
-        {tags.map((tag) => {
+        {tags?.map((tag) => {
           let color = tag === 'Done' ? 'green' : 'geekblue';
           if (tag === 'Important') {
             color = 'volcano';
@@ -67,10 +67,29 @@ const TodoList = ({data}: ITodoList ) => {
       progress : <TaskProgress taskPercent = {item.progress || 0}/>
     }
   })
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const showModal = () : void=> {
+    setIsModalOpen(true);
+  };
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
   return (
     <>
       <Table columns={columns} dataSource={newData} />
-      <ModalAddJob component = {<AddJob/>}/>
+      <ModalAddJob
+      isModalOpen = {isModalOpen}
+      component = {<AddJob 
+        onOk={handleOk}
+      />}
+      showModal = {showModal}
+      handleOk = {handleOk}
+      handleCancel = {handleCancel}
+      footer={true} 
+      title = 'Add job' btnName = 'Add job'/>
     </>
   )
 }

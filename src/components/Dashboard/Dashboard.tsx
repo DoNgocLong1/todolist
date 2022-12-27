@@ -9,16 +9,9 @@ import {
 } from "./Dashboard.styled";
 import { selectTodolist } from "features/todolist/todolistSlice";
 
-const todolistJSON: any = localStorage.getItem('todolist') || []
-
-const todolist = JSON.parse(todolistJSON)
-console.log(todolist);
-
-
 const Dashboard = () => {
-  /* const state = useSelector(selectTodolist)
+  const state = useSelector(selectTodolist)
   const {todolist} = state
-  console.log("todolist", todolist); */
   const Div2: React.FC = () => <div> tab 2</div>;
   const Div3: React.FC = () => <div> tab 3</div>;
   return (

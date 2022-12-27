@@ -1,30 +1,33 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Button, Modal } from 'antd';
 interface IModel{
-    component: React.ReactNode
+    isModalOpen: boolean
+    component: React.ReactNode,
+    title: string,
+    btnName: string,
+    showModal: () => void,
+    handleOk: () => void,
+    handleCancel: () => void,
+    footer: boolean,
+
 }
-const ModalAddJob = ({component} : IModel) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
-
+const ModalAddJob = (
+  {
+    isModalOpen,
+    component,
+    title, 
+    btnName, 
+    showModal,
+    handleCancel,
+  }: IModel) => {
   return (
     <>
       <Button type="primary" onClick={showModal}>
-        Open Modal
+        {btnName}
       </Button>
-      <Modal title="Basic Modal" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-        {component}
+      <Modal footer={null} title={title} open={isModalOpen} onCancel={handleCancel}>
+        {component
+        }
       </Modal>
     </>
   );

@@ -1,11 +1,10 @@
- 
- export interface DataType {
+export interface DataType {
     key: number,
-    title: string;
-    progress: React.ReactNode;
-    start: string;
-    status: string;
-    tags: string[];
+    title: string,
+    progress: React.ReactNode,
+    start: string,
+    status: string,
+    tags: string[],
   }
 let data : DataType[]= [
     {
